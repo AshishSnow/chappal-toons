@@ -8,3 +8,4 @@
 - Alarm snooze battle (alarm_snooze_battle)
 - The last cookie in the jar / midnight heist (last_cookie_heist)
 - Pretending to sleep when parents check / "are you asleep?" (are_you_asleep)
+- Cleaning my room: hiding everything in the closet (closet_avalanche)

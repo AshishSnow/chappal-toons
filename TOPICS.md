@@ -5,3 +5,4 @@
 - Dad vs the AC remote (dad_vs_ac_remote)
 - Mom's magic finding power / where is my charger (where_is_my_charger)
 - The perfect kid next door (perfect_kid_next_door)
+- Alarm snooze battle (alarm_snooze_battle)

@@ -6,3 +6,4 @@
 - Mom's magic finding power / where is my charger (where_is_my_charger)
 - The perfect kid next door (perfect_kid_next_door)
 - Alarm snooze battle (alarm_snooze_battle)
+- The last cookie in the jar / midnight heist (last_cookie_heist)

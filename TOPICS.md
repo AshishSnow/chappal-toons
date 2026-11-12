@@ -1,0 +1,7 @@
+# Topics already made (do not repeat)
+- Mom gives THE LOOK (mom_look_v2)
+- Study plan vs reality (study_plan_vs_reality)
+- Mom when guests arrive (mom_when_guests_arrive)
+- Dad vs the AC remote (dad_vs_ac_remote)
+- Mom's magic finding power / where is my charger (where_is_my_charger)
+- The perfect kid next door (perfect_kid_next_door)

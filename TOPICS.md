@@ -12,3 +12,4 @@
 - Dad trying to fix the Wi-Fi (dad_fixes_wifi)
 - Kid vs vegetables at dinner / broccoli smuggling (veggie_smuggler)
 - Road trip: "are we there yet?" (are_we_there_yet)
+- Phone battery at 1% vs Mom's phone at 1% for 3 days (phone_at_1_percent)

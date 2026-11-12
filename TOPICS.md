@@ -7,4 +7,4 @@
 - The perfect kid next door (perfect_kid_next_door)
 - Alarm snooze battle (alarm_snooze_battle)
 - The last cookie in the jar / midnight heist (last_cookie_heist)
-- Pretending to sleep when parents check (fake_sleep_check)
+- Pretending to sleep when parents check / "are you asleep?" (are_you_asleep)

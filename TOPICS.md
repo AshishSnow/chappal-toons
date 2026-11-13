@@ -16,3 +16,4 @@
 - Mom says "we have food at home" / fridge tumbleweed + blob dinner (we_have_food_at_home)
 - The dog ate my homework / making the excuse true, dog eats Dad's report instead (dog_ate_my_homework)
 - Waiting for food delivery / driver circles the block, arrives the second Dad goes to the bathroom, neighbour eats it (waiting_for_food_delivery)
+- Siblings fighting over the TV remote / channel war, remote flies in slow-mo, Mom catches it, TV off "homework", then watches her own show (the_remote_war)

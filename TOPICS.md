@@ -15,3 +15,4 @@
 - Phone battery at 1% vs Mom's phone at 1% for 3 days (phone_at_1_percent)
 - Mom says "we have food at home" / fridge tumbleweed + blob dinner (we_have_food_at_home)
 - The dog ate my homework / making the excuse true, dog eats Dad's report instead (dog_ate_my_homework)
+- Waiting for food delivery / driver circles the block, arrives the second Dad goes to the bathroom, neighbour eats it (waiting_for_food_delivery)

@@ -17,3 +17,4 @@
 - The dog ate my homework / making the excuse true, dog eats Dad's report instead (dog_ate_my_homework)
 - Waiting for food delivery / driver circles the block, arrives the second Dad goes to the bathroom, neighbour eats it (waiting_for_food_delivery)
 - Siblings fighting over the TV remote / channel war, remote flies in slow-mo, Mom catches it, TV off "homework", then watches her own show (the_remote_war)
+- Exam: knew everything at home, blank in class / flashback genius, zoom into brain dancing, empty MATHS drawer + moth, answers flood back 1 sec after (blank_in_the_exam)

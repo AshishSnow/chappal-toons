@@ -21,3 +21,4 @@
 - Grandma: "you look so thin, eat more" / split screen what she sees vs reality, plate tower, jeans button cracks the lens, giant goodbye snack bag flattens him (grandma_you_look_so_thin)
 - Online shopping: expectation vs delivery / doll-size hoodie fits his head, split screen photo vs reality, XXL box erupts into a walking tent, return box explodes, tiny hoodie fits the dog perfectly (online_shopping_expectation)
 - Parents vs new technology / Dad joins the family video call: face jammed in the lens, yelling on mute, ceiling cam, forehead mode, potato filter, phone splashes into the fish bowl, Grandma joins in crisp 4K with a ring light: "why is Dad a fish?" (dad_joins_the_video_call)
+- Mom asks "who wants to help with the groceries?" / everyone POOFs, Dad on a banana "call" behind the curtain, kid pretends to be a lamp, Mom carries a bag skyscraper in ONE TRIP, "who wants ice cream?" ZOOM, trap: it's in the car with 30 more bags, POOF again (who_wants_to_help)

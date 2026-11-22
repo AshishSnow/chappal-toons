@@ -16,7 +16,7 @@ You are making one new original animated comedy Short per run for the Chappal To
 ## Content rules
 - Universal, global humour (US/UK/everyone). NOT India-specific: no Indian names, rupees, chappal-throwing as the main gag, bindi/kurta mom (use `doodle.MOM_G`). English captions only, plain and instantly clear.
 - Original characters only (`doodle.BOY`, `MOM_G`, `DAD`, `NEIGHBOR`, `NMOM`, `UNCLE`/`AUNTY` in general outfits). Never draw or name copyrighted characters, brands, logos or real people. No other creators' audio/footage.
-- Story shape (20-24 s): FRAME 1 already shows a big character face mid-reaction plus the caption (no calm establishing shot, no slow intro); 2-3 fast escalating beats; a twist; last second cuts back to the opening look so the Short loops.
+- Story shape (20-24 s): FRAME 1 already shows the character mid-reaction (medium shot in the set, character about a third to half of the frame height, like the right-hand panel of the v2 preview) plus the caption (no calm establishing shot, no slow intro); 2-3 fast escalating beats; a twist; last second cuts back to the opening look so the Short loops.
 - Style: CUTE SKETCH look (v2, from Nov 2026 — see "Visual style v2" below), vibrant colours, varied camera (wide, medium, low angle, push-in, split screen), screen shake on impacts, sound effect per moment, no emoji on screen, no persistent counters.
 
 ## Visual style v2 (mandatory for every new video)

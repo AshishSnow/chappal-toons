@@ -17,7 +17,14 @@ You are making one new original animated comedy Short per run for the Chappal To
 - Universal, global humour (US/UK/everyone). NOT India-specific: no Indian names, rupees, chappal-throwing as the main gag, bindi/kurta mom (use `doodle.MOM_G`). English captions only, plain and instantly clear.
 - Original characters only (`doodle.BOY`, `MOM_G`, `DAD`, `NEIGHBOR`, `NMOM`, `UNCLE`/`AUNTY` in general outfits). Never draw or name copyrighted characters, brands, logos or real people. No other creators' audio/footage.
 - Story shape (20-24 s): FRAME 1 already shows a big character face mid-reaction plus the caption (no calm establishing shot, no slow intro); 2-3 fast escalating beats; a twist; last second cuts back to the opening look so the Short loops.
-- Style: clean flat doodle look, bold outlines, vibrant colours, varied camera (ECU, wide, low angle, push-in, split screen), screen shake on impacts, sound effect per moment, no emoji on screen, no persistent counters.
+- Style: CUTE SKETCH look (v2, from Nov 2026 — see "Visual style v2" below), vibrant colours, varied camera (wide, medium, low angle, push-in, split screen), screen shake on impacts, sound effect per moment, no emoji on screen, no persistent counters.
+
+## Visual style v2 (mandatory for every new video)
+- The engine now draws a hand-drawn cute sketch style automatically: `doodle.fl()` / `eng.fill_out()` make wobbly double pencil outlines in warm brown ink with slightly off-register fills, characters have chibi proportions (bigger head, shorter body), big shiny eyes with highlights, rosy hatched blush. Angry eyes are cute (no red veins).
+- In `render(f)` of every new scenes file: `import sketch`, set `sketch.BOIL[0] = f // 4` at the start (gentle line boil) and call `sketch.paper(s)` just before `return s` (paper-grain finish). See `engine/scenes76_style.py` for the pattern.
+- KEEP CHARACTERS SMALL AND IN A SET: most shots are medium/wide with full-body characters at scale k 0.9-1.3 standing in a real, detailed set (furniture, props, windows, wall decor) - the characters should take roughly 30-50% of the frame height, not fill it. Use a big face close-up (face() Rt <= 210) at most ONCE or twice per video for the key reaction; never a giant face filling the whole screen. The hook can be a medium shot (character + the key prop/set) as long as the reaction and caption read instantly.
+- Give every set little cute details (a plant, a picture frame, a rug, a pet bed, stars on the wallpaper) and keep outlines/props in the same sketch style (use `fl()` for props so they get the pencil line).
+- Contact-sheet check now also asks: are the characters small and cute enough, is the set readable, do labels avoid covering faces?
 - Reels safe zone: nothing important in top 250 px, bottom 420 px, right 120 px, left 60 px. Text centred.
 - Family-friendly; madeForKids stays false.
 - Try something new each video (new set, new prop, new camera trick) – don't repeat the same structure.

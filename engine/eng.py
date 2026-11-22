@@ -75,6 +75,10 @@ def poly(ctx, pts):
 
 
 def fill_out(ctx, c, ow=6):
+    import sketch
+    if sketch.ON[0]:
+        p = ctx.copy_path(); ctx.save(); setc(ctx, c); ctx.fill(); ctx.restore()
+        ctx.new_path(); ctx.append_path(p); sketch.stroke(ctx, (0.16, 0.1, 0.12), ow); return
     ctx.save(); setc(ctx, c); ctx.fill_preserve(); setc(ctx, OUT); ctx.set_line_width(ow)
     ctx.set_line_join(cairo.LINE_JOIN_ROUND); ctx.stroke(); ctx.restore()
 

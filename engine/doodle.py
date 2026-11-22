@@ -1,8 +1,11 @@
 """Clean flat doodle-style characters: bold outline, flat colour, round chubby shapes (original designs)."""
 import cairo, math
+import sketch
 from eng import hx, dark, light, lerp, clamp, ellipse, poly, setc, vgrad, P
 
-INK = (0.07, 0.06, 0.08)
+INK = (0.16, 0.1, 0.12)     # warm dark-brown pencil ink (softer than black)
+CUTE_HEAD = 1.16             # chibi proportions: bigger head ...
+CUTE_BODY = 0.88             # ... shorter torso/arms
 _SWAY = [0.0]
 _SIND = [True]
 
@@ -12,7 +15,16 @@ def ink(ctx, w):
 
 
 def fl(ctx, col, w):
-    ctx.save(); setc(ctx, col); ctx.fill_preserve(); ink(ctx, w); ctx.stroke(); ctx.restore()
+    if not sketch.ON[0]:
+        ctx.save(); setc(ctx, col); ctx.fill_preserve(); ink(ctx, w); ctx.stroke(); ctx.restore(); return
+    p = ctx.copy_path()
+    ctx.save()
+    # flat fill nudged a hair off the outline (hand-coloured misregistration)
+    dx, dy = ctx.device_to_user_distance(2.0, 1.5)
+    ctx.new_path(); ctx.translate(dx, dy); ctx.append_path(p); ctx.restore()
+    ctx.save(); setc(ctx, col); ctx.fill(); ctx.restore()
+    ctx.new_path(); ctx.append_path(p)
+    sketch.stroke(ctx, INK, w)
 
 
 # ------------------------------------------------------------------ face parts
@@ -22,15 +34,9 @@ def eyes(ctx, R, kind, turn, lw):
         for x, y, s in pos:
             r = R * 0.3 * s
             ellipse(ctx, x, y + R * 0.06, r * 0.95, r); fl(ctx, (1, 1, 1), lw)
-            setc(ctx, hx('e0263a')); ctx.set_line_width(lw * 0.35)
-            for i in range(6):
-                a = i * math.pi / 3 + 0.3
-                ctx.move_to(x + math.cos(a) * r * 0.92, y + R * 0.06 + math.sin(a) * r * 0.92)
-                ctx.line_to(x + math.cos(a + 0.2) * r * 0.6, y + R * 0.06 + math.sin(a + 0.2) * r * 0.6)
-                ctx.line_to(x + math.cos(a - 0.1) * r * 0.45, y + R * 0.06 + math.sin(a - 0.1) * r * 0.45)
-                ctx.stroke()
-            px = x + (R * 0.08 if x < turn else -R * 0.08)
-            ellipse(ctx, px, y + R * 0.12, R * 0.045, R * 0.05); setc(ctx, INK); ctx.fill()
+            px = x + (R * 0.06 if x < turn else -R * 0.06)
+            ellipse(ctx, px, y + R * 0.12, R * 0.085, R * 0.095); setc(ctx, INK); ctx.fill()
+            ellipse(ctx, px - R * 0.03, y + R * 0.09, R * 0.03, R * 0.03); setc(ctx, (1, 1, 1)); ctx.fill()
         # angry V brows
         ink(ctx, lw * 1.7)
         ctx.new_path(); ctx.move_to(-R * 0.62 + turn, -R * 0.38); ctx.curve_to(-R * 0.4 + turn, -R * 0.36, -R * 0.15 + turn, -R * 0.22, -R * 0.02 + turn, -R * 0.1); ctx.stroke()
@@ -38,13 +44,16 @@ def eyes(ctx, R, kind, turn, lw):
         return
     for x, y, s in pos:
         if kind == 'normal' or kind == 'smug':
-            ellipse(ctx, x, y, R * 0.085 * s, R * 0.125); setc(ctx, INK); ctx.fill()
-            ellipse(ctx, x - R * 0.025, y - R * 0.05, R * 0.03, R * 0.035); setc(ctx, (1, 1, 1)); ctx.fill()
+            ellipse(ctx, x, y + R * 0.02, R * 0.115 * s, R * 0.155); setc(ctx, INK); ctx.fill()
+            ellipse(ctx, x, y + R * 0.09, R * 0.075 * s, R * 0.06); setc(ctx, (0.42, 0.26, 0.2)); ctx.fill()
+            ellipse(ctx, x - R * 0.035, y - R * 0.045, R * 0.045, R * 0.05); setc(ctx, (1, 1, 1)); ctx.fill()
+            ellipse(ctx, x + R * 0.045, y + R * 0.08, R * 0.02, R * 0.02); setc(ctx, (1, 1, 1)); ctx.fill()
             if kind == 'smug':
                 ink(ctx, lw); ctx.new_path(); ctx.move_to(x - R * 0.12, y - R * 0.04); ctx.line_to(x + R * 0.12, y - R * 0.06); ctx.stroke()
         elif kind == 'shock':
             ellipse(ctx, x, y, R * 0.17 * s, R * 0.19); fl(ctx, (1, 1, 1), lw)
-            ellipse(ctx, x, y + R * 0.02, R * 0.04, R * 0.045); setc(ctx, INK); ctx.fill()
+            ellipse(ctx, x, y + R * 0.02, R * 0.05, R * 0.055); setc(ctx, INK); ctx.fill()
+            ellipse(ctx, x - R * 0.02, y - R * 0.005, R * 0.017, R * 0.017); setc(ctx, (1, 1, 1)); ctx.fill()
         elif kind == 'happy':
             ink(ctx, lw * 1.2); ctx.new_path(); ctx.arc(x, y + R * 0.06, R * 0.11, math.pi * 1.1, math.pi * 1.9); ctx.stroke()
         elif kind == 'closed':
@@ -188,7 +197,11 @@ def head(ctx, R, ch, p, f, lw):
     # soft flat blush
     if p.get('eye') != 'glare':
         for bx in (-R * 0.5 + turn, R * 0.58 + turn):
-            ellipse(ctx, bx, R * 0.36, R * 0.15, R * 0.08); setc(ctx, (1, 0.55, 0.6, 0.55)); ctx.fill()
+            ellipse(ctx, bx, R * 0.34, R * 0.16, R * 0.1); setc(ctx, (1, 0.5, 0.58, 0.6)); ctx.fill()
+            ink(ctx, lw * 0.35)
+            for j in (-1, 0, 1):
+                ctx.new_path(); ctx.move_to(bx + j * R * 0.06 - R * 0.015, R * 0.38); ctx.line_to(bx + j * R * 0.06 + R * 0.02, R * 0.3)
+                setc(ctx, (0.9, 0.3, 0.4, 0.5)); ctx.stroke()
     ek = p.get('eye', 'normal')
     if p.get('blink', 0) > 0.5 and ek in ('normal', 'smug', 'shock'):
         ek = 'closed'
@@ -242,7 +255,7 @@ def head(ctx, R, ch, p, f, lw):
 def draw(ctx, x, y, k, f, ch, p):
     ground = y + 186 * k
     S = k * 1.35
-    lw = max(3.0, 3.7 * S)
+    lw = max(2.6, 3.0 * S)      # thinner, cuter pencil line
     ctx.save()
     ctx.translate(x, ground - 68 * S)
     ctx.rotate(math.radians(p['rot']) * f)
@@ -255,7 +268,7 @@ def draw(ctx, x, y, k, f, ch, p):
 
     tor = p['torso']
     u = upv(tor); pn = (-u[1], u[0])
-    TL = 104 * S
+    TL = 104 * S * CUTE_BODY
 
     def tp(a, b):
         return (u[0] * a + pn[0] * b, u[1] * a + pn[1] * b)
@@ -272,8 +285,8 @@ def draw(ctx, x, y, k, f, ch, p):
 
     def arm(side, a1, a2, back):
         sp = tp(TL - 20 * S, side * 44 * S)
-        e = (sp[0] + dn(a1)[0] * 40 * S, sp[1] + dn(a1)[1] * 40 * S)
-        h = (e[0] + dn(a1 + a2)[0] * 36 * S, e[1] + dn(a1 + a2)[1] * 36 * S)
+        e = (sp[0] + dn(a1)[0] * 40 * S * CUTE_BODY, sp[1] + dn(a1)[1] * 40 * S * CUTE_BODY)
+        h = (e[0] + dn(a1 + a2)[0] * 36 * S * CUTE_BODY, e[1] + dn(a1 + a2)[1] * 36 * S * CUTE_BODY)
         sl = ch.get('sleeve', 1.0)
         sc = dark(skin, 0.9) if back else skin
         limb([sp, e, h], 30 * S, sc)
@@ -336,7 +349,7 @@ def draw(ctx, x, y, k, f, ch, p):
         ctx.line_to(*tp(-20 * S, -hw * 1.15)); ctx.line_to(*tp(-20 * S, -hw * 0.55)); ctx.curve_to(*tp(TL * 0.3, -hw * 0.05), *tp(TL * 0.5, sw * 0.75), *tp(TL - 26 * S, sw * 1.25)); ctx.close_path()
         fl(ctx, ch['dupatta'], lw)
     arm(1, p['rsh'], p['rel'], False)
-    R = 86 * S
+    R = 86 * S * CUTE_HEAD
     ht = tor + p.get('head', 0)
     nk = tp(TL, 0)
     hc = (nk[0] + upv(ht)[0] * R * 0.82, nk[1] + upv(ht)[1] * R * 0.82)
